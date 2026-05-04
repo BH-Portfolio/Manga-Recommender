@@ -2,7 +2,7 @@
 requests>=2.31.0
 beautifulsoup4>=4.12.0
 selenium>=4.15.0
-jikan-py>=4.3.2
+jikanpy
 
 # Data processing
 pandas>=2.1.0
@@ -17,6 +17,9 @@ plotly>=5.17.0
 # Jupyter
 ipykernel>=6.25.0
 jupyter>=1.0.0
+
+# Testing
+pytest
 
 # Later (don't install yet, just listing)
 # scikit-learn>=1.3.0

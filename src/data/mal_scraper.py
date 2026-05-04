@@ -10,9 +10,10 @@ import json
 class MALScraper:
     """Scrape manga metadata from MyAnimeList"""
 
-    def __init__(self):
+    def __init__(self, session=None, delay=1.0):
         self.base_url = "https://api.jikan.moe/v4"
-        self.delay = 1.0 # Rate limit 1 request per second
+        self.session = session or requests
+        self.delay = delay # Rate limit 1 request per second
 
     def get_top_manga(self, page=1, limit=25):
         """Get best mange by popularity/rankings"""
