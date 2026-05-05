@@ -11,7 +11,7 @@ def scraper():
 def test_get_top_manga_success(mock_sleep, mock_get, scraper):
     mock_response = MagicMock()
     mock_response.status_code = 200
-    mock_response.json.return_value = {
+    mock_response.json.return_value = { 
         "data": [{"title": "Berserk"}, {"title": "One Piece"}]
     }
 
