@@ -72,5 +72,35 @@ class SalesDataGenerator:
 
         return sales_data
     
-            
-        
+
+def generate_all_sales(self):
+    """Generate sales for all manga"""
+    all_sales = []
+
+    valid_manga = self.df[self.df['published_from'].notna()]
+
+    print(f"Generating sales data for {len(valid_manga)} manga...")
+
+    for idx, manga in valid_manga.iterrows():
+        if idx % 100 == 0:
+            print(f"Progress: {idx}/{len(valid_manga)}")
+
+        sales = self.generate_sales_trajectory(manga)
+        all_sales.extend(sales)
+    
+    return pd.DataFrame(all_sales)
+
+
+def save_sales_data(self, output_path='data/raw/manga_sales.csv'):
+    """Generate and save sales data"""
+    sales_df = self.generate_all_sales()
+    sales_df.to_csv(output_path, index=False)
+
+    print(f"\n Saved {len(sales_df)} sales records to {output_path}")
+    print(f"\n Sales summary:")
+    print(f"Data range: {sales_df['date'].min()} to {sales_df['date'].max()}")
+
+
+if __name__ == "__main__":
+    generator = SalesDataGenerator()
+    sales_df = generator.save_sales_data()    
