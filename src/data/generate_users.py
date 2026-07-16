@@ -60,7 +60,8 @@ class UserInteractionGenerator:
             for manga in selected_manga:
                 manga_score = manga.get('score', 7.0)
                 rating = np.random.normal(
-                    (user['avg_rating'] + manga_score / 2,1.0)
+                    (user['avg_rating'] + manga_score / 2,
+                    1.0)
                 )
                 rating = np.clip(rating, 1, 10)
 
