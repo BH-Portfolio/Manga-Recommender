@@ -25,4 +25,6 @@ class SalesPatternRecommender:
         """Load feature matrix and metadata"""
         print("Loading data...")
         self.manga_df = pd.read_csv('data/processed/manga_features.csv')
-        
+        print(f"Loaded {len(self.manga_df)} manga with features")
+
+    
