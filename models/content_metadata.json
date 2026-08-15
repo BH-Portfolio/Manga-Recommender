@@ -1,0 +1,12 @@
+{
+  "model_type": "ContentBasedNeural",
+  "embedding_dim": 64,
+  "num_manga": 248,
+  "num_genres": 19,
+  "num_demographics": 6,
+  "hyperparams": {
+    "epochs": 20,
+    "lr": 0.001,
+    "batch_size": 32
+  }
+}
