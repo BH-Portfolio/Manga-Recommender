@@ -1,6 +1,7 @@
 """
 Ensemble recommender combining all three models
 """
+import os
 import numpy as np
 import pandas as pd
 import joblib
@@ -14,7 +15,10 @@ class HybridRecommender:
     """Combine all three models"""
     
     def __init__(self, model_dir='models', weights=None):
-        self.model_dir = Path(model_dir)
+
+        base_dir = Path(__file__).parent.parent.parent
+        self.model_dir = base_dir / model_dir
+        self.data_dir = base_dir / 'data'
         
         # Load all models
         print("Loading models...")

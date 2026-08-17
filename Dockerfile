@@ -1,17 +1,22 @@
-# Use official Python image
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-# Set working directory inside container
 WORKDIR /app
 
-# Copy requirements first (for caching)
+# Copy requirements
 COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of your code
+# Copy application code
 COPY . .
 
-# Default command (runs tests)
-CMD ["pytest", "-v"]
+# Copy data directories
+COPY data/ ./data/
+COPY models/ ./models/
+
+# Expose port
+EXPOSE 8000
+
+# Run API
+CMD ["python", "-m", "uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
